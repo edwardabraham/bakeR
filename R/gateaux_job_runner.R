@@ -80,7 +80,7 @@ gateaux_job_runner <- function(pars_list = NULL,
       rr <- jsonlite::fromJSON(ret)
       rr <- dplyr::bind_cols(rr %>% dplyr::select(-parameters), rr$parameters)    # added 'dplyr::' to solve a error message: could not find function "bind_cols"
       rr <- dplyr::bind_cols(rr %>% dplyr::select(-env), rr$env)                  # added 'dplyr::' to solve a error message: could not find function "bind_cols"
-      readr::write_csv(rr%>% dplyr::select(-variant), path = paste0(prefix,'-joblist.csv'), append = append)
+      readr::write_csv(rr%>% dplyr::select(-variant), file = paste0(prefix,'-joblist.csv'), append = append)
     } else {
       jsonlite::fromJSON(ret)
       }
